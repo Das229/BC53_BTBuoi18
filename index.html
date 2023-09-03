@@ -29,6 +29,7 @@
           id="arrayNumber"
           class="form-control"
           placeholder="nhập số n"
+          onkeydown="if(event.key==='.'){event.preventDefault();}"
         />
       </div>
       <button class="btn btn-success" onclick="btnThemSo()">Thêm số</button>

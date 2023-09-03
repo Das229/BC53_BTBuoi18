@@ -4,12 +4,18 @@ var result = document.querySelector(".result");
 
 function btnThemSo() {
   var arrayNumber = +document.querySelector("#arrayNumber").value;
-  inputNum.push(arrayNumber);
+  // inputNum.push(arrayNumber);
   arrayNumber.value = "";
+  check(inputNum,arrayNumber);
   result.innerHTML = "";
   result.innerHTML += "Số đã nhập: " + inputNum.join(", ");
 }
-
+function check(arr, input) {
+  var checkNum = Number.isInteger(input);
+  if (checkNum === true) {
+    arr.push(input);
+  }
+}
 // B1: tổng các số dương trong mảng
 function btnSum() {
   var sum = 0;
@@ -132,7 +138,7 @@ function btnFind() {
 
   for(var c = 0;c <= firstNumber.length; c++){
     var index = firstNumber.indexOf(firstNumber[c], -1);
-    if(index === -1){
+    if(index == -1){
         document.querySelector(".Find").innerHTML =
       "-1 (vì không có số nguyên trong mảng này )";
     }else {
