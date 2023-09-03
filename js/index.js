@@ -4,9 +4,8 @@ var result = document.querySelector(".result");
 
 function btnThemSo() {
   var arrayNumber = +document.querySelector("#arrayNumber").value;
-  // inputNum.push(arrayNumber);
+  inputNum.push(arrayNumber);
   arrayNumber.value = "";
-  check(inputNum,arrayNumber);
   result.innerHTML = "";
   result.innerHTML += "Số đã nhập: " + inputNum.join(", ");
 }
@@ -121,7 +120,7 @@ function btnArrange() {
   });
   document.querySelector(
     ".arrange"
-  ).innerHTML = ` Vị trí sau thay đổi : ${inputNum} `;
+  ).innerHTML = ` Thứ tự tăng dần : ${inputNum} `;
 }
 // -------------------------------------------------
 // B8 : Tìm số nguyên đầu tiên trong mảng , Nếu mảng k có số nguyên thì trả về -1
