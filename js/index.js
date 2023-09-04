@@ -125,30 +125,30 @@ function btnArrange() {
 // -------------------------------------------------
 // B8 : Tìm số nguyên đầu tiên trong mảng , Nếu mảng k có số nguyên thì trả về -1
 function btnFind() {
-  var firstNumber ;
+  var firstNumber;
   firstNumber = inputNum.filter((number) => {
     for (var i = 2; i <= Math.sqrt(number); i++) {
       if (number % i === 0) {
         return false;
       }
     }
-    return number  > 1;
+    return number > 1;
   });
 
-  for(var c = 0;c <= firstNumber.length; c++){
+  for (var c = 0; c <= firstNumber.length; c++) {
     var index = firstNumber.indexOf(firstNumber[c], -1);
-    if(index == -1){
-        document.querySelector(".Find").innerHTML =
-      "-1 (vì không có số nguyên trong mảng này )";
-    }else {
-        var firstNum = firstNumber.shift();
-        document.querySelector(".Find").innerHTML = `
+    if (index == -1) {
+      document.querySelector(".Find").innerHTML =
+        "-1 (vì không có số nguyên trong mảng này )";
+    } else {
+      var firstNum = firstNumber.shift();
+      document.querySelector(".Find").innerHTML = `
                 Số nguyên đầu tiên trong mảng là : ${firstNum} 
             `;
-      }
-  };
+    }
+  }
 }
- 
+
 // ---------------------------------------------------
 // B9 : Nhập thêm 1 mảng số thực , tìm xem trong mảng có bao nhiêu số nguyên
 var inputNum1 = [];
@@ -157,48 +157,47 @@ var result1 = document.querySelector(".result1");
 
 function btnThemSo1() {
   var arrayNumber1 = +document.querySelector("#arrayNumber1").value;
-  inputNum.push(arrayNumber1);
+  inputNum1.push(arrayNumber1);
   arrayNumber1.value = "";
   result1.innerHTML = "";
-  result1.innerHTML += "Số đã nhập: " + inputNum.join(", ");
-};
+  result1.innerHTML += "Số đã nhập: " + inputNum1.join(", ");
+}
 
-function btnFind1(){
-    var arrNum = [];
-    arrNum = inputNum.filter((number) => {
-      for (var i = 2; i <= Math.sqrt(number); i++) {
-        if (number % i === 0) {
-          return false;
-        }
-      }
-      return number > 1;
-    });
+function btnFind1() {
   
-    var find = arrNum.length;
+  for(var c = 0; c < inputNum1.length; c++){
+    var arrResult = inputNum1.filter(function(n) {
+      return Number.isInteger(n) === true
+    })
+  }
+
+  var find = arrResult.length;
+  if (find === 0) {
+    document.querySelector(".Find1").innerHTML = ` Mảng không chứa số nguyên.`;
+  } else {
     document.querySelector(".Find1").innerHTML = ` Mảng gồm ${find} số nguyên.`;
-  
-};
+  }
+}
 // ---------------------------------------------
-// B10 : so sánh số lượng số âm và dương xem số nào nhiều hơn 
+// B10 : so sánh số lượng số âm và dương xem số nào nhiều hơn
 function btnSoSanh() {
-    var positiveNum = [];
-    var negativeNum = [];
-    for(var i = 0; i < inputNum.length; i++){
-      if(inputNum[i] !== 0){
-        if(inputNum[i] > 0){
-          positiveNum.push(inputNum[i]);
-        } else {
-          negativeNum.push(inputNum[i])
-        };
-      } 
-      
-      if(positiveNum.length > negativeNum.length){
-        document.querySelector(".SoSanh").innerHTML = "Số dương nhiều hơn số âm";
-      }else if(positiveNum.length = negativeNum.length) {
-        document.querySelector(".SoSanh").innerHTML = "Số dương bằng số âm";
-      }else {
-        document.querySelector(".SoSanh").innerHTML = "Số âm nhiều hơn số dương";
+  var positiveNum = [];
+  var negativeNum = [];
+  for (var i = 0; i < inputNum.length; i++) {
+    if (inputNum[i] !== 0) {
+      if (inputNum[i] > 0) {
+        positiveNum.push(inputNum[i]);
+      } else {
+        negativeNum.push(inputNum[i]);
       }
     }
-  
+
+    if (positiveNum.length > negativeNum.length) {
+      document.querySelector(".SoSanh").innerHTML = "Số dương nhiều hơn số âm";
+    } else if ((positiveNum.length = negativeNum.length)) {
+      document.querySelector(".SoSanh").innerHTML = "Số dương bằng số âm";
+    } else {
+      document.querySelector(".SoSanh").innerHTML = "Số âm nhiều hơn số dương";
+    }
+  }
 }
